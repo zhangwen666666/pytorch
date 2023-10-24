@@ -1,0 +1,10 @@
+path: ../datasets/objects  # dataset root dir
+train: images/train  # train images (relative to 'path') 4 images
+val: images/val  # val images (relative to 'path') 4 images
+test:  # test images (optional)
+
+# Class
+names:
+  0: girl
+  1: car
+  2: dog
