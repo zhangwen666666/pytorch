@@ -15,32 +15,32 @@ import torchvision.transforms as transforms
 from torch.utils.data import Dataset
 from torch.utils.data import DataLoader
 
-import utils.util as util
+import py.utils.util as util
 
 
-class BBoxRegressionDataset(Dataset):
+class BBoxRegressionDataset(Dataset):   #./data/bbox_regression
 
     def __init__(self, root_dir, transform=None):
         super(BBoxRegressionDataset, self).__init__()
         self.transform = transform
 
-        samples = util.parse_car_csv(root_dir)
+        samples = util.parse_car_csv(root_dir)  #解析csv文件
         jpeg_list = list()
         # 保存{'image_id': ?, 'positive': ?, 'bndbox': ?}
         box_list = list()
         for i in range(len(samples)):
-            sample_name = samples[i]
+            sample_name = samples[i]    # 图片名
 
-            jpeg_path = os.path.join(root_dir, 'JPEGImages', sample_name + '.jpg')
-            bndbox_path = os.path.join(root_dir, 'bndboxs', sample_name + '.csv')
-            positive_path = os.path.join(root_dir, 'positive', sample_name + '.csv')
+            jpeg_path = os.path.join(root_dir, 'JPEGImages', sample_name + '.jpg')  #./data/bbox_regression/JPEGImages/图片名.jpg
+            bndbox_path = os.path.join(root_dir, 'bndboxs', sample_name + '.csv')   #./data/bbox_regression/bndboxs/图片名.csv 存放的是标注边界框，即真实的边界框
+            positive_path = os.path.join(root_dir, 'positive', sample_name + '.csv')    #./data/bbox_regression/positive/图片名.csv 存放的是正样本(IoU>0.6)边界框
 
             jpeg_list.append(cv2.imread(jpeg_path))
             bndboxes = np.loadtxt(bndbox_path, dtype=int, delimiter=' ')
             positives = np.loadtxt(positive_path, dtype=int, delimiter=' ')
 
             if len(positives.shape) == 1:
-                bndbox = self.get_bndbox(bndboxes, positives)
+                bndbox = self.get_bndbox(bndboxes, positives)   #返回IoU值最大的标注边界框
                 box_list.append({'image_id': i, 'positive': positives, 'bndbox': bndbox})
             else:
                 for positive in positives:

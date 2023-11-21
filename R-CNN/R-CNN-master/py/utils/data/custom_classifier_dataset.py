@@ -15,17 +15,17 @@ from torch.utils.data import Dataset
 from torch.utils.data import DataLoader
 import torchvision.transforms as transforms
 
-from utils.util import parse_car_csv
+from py.utils.util import parse_car_csv
 
 
 class CustomClassifierDataset(Dataset):
 
-    def __init__(self, root_dir, transform=None):
+    def __init__(self, root_dir, transform=None):   #./data/classifier_car/train(val)
         samples = parse_car_csv(root_dir)
 
-        jpeg_images = list()
-        positive_list = list()
-        negative_list = list()
+        jpeg_images = list() # 存放图片
+        positive_list = list()  # 存放正例，存放的是内容是字典，字典中存放的是正例的标注信息，以及对应的图片的idx
+        negative_list = list()  # 存放负样本
         for idx in range(len(samples)):
             sample_name = samples[idx]
             jpeg_images.append(cv2.imread(os.path.join(root_dir, 'JPEGImages', sample_name + ".jpg")))

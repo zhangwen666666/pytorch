@@ -31,7 +31,7 @@ def config(gs, img, strategy='q'):
 
 
 def get_rects(gs):
-    rects = gs.process()
+    rects = gs.process()    #调用 seg.process() 后，算法将开始执行，并在图像中查找和合并相似的像素
     rects[:, 2] += rects[:, 0]
     rects[:, 3] += rects[:, 1]
 

@@ -21,7 +21,7 @@ from utils.data.custom_bbox_regression_dataset import BBoxRegressionDataset
 import utils.util as util
 
 
-def load_data(data_root_dir):
+def load_data(data_root_dir):   #./data/bbox_regression
     transform = transforms.Compose([
         transforms.ToPILImage(),
         transforms.Resize((227, 227)),

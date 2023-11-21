@@ -17,7 +17,7 @@ from torchvision.models import alexnet
 import torchvision.transforms as transforms
 import selectivesearch
 
-import utils.util as util
+import py.utils.util as util
 
 
 def get_device():
@@ -113,8 +113,8 @@ def nms(rect_list, score_list):
 
 if __name__ == '__main__':
     device = get_device()
-    transform = get_transform()
-    model = get_model(device=device)
+    transform = get_transform() #加载数据处理器
+    model = get_model(device=device)    #加载模型
 
     # 创建selectivesearch对象
     gs = selectivesearch.get_selective_search()
@@ -139,9 +139,9 @@ if __name__ == '__main__':
 
     # softmax = torch.softmax()
 
-    svm_thresh = 0.60
+    svm_thresh = 0.60   #SVM阈值
 
-    # 保存正样本边界框以及
+    # 保存正样本边界框以及得分
     score_list = list()
     positive_list = list()
 
@@ -185,5 +185,6 @@ if __name__ == '__main__':
     print(nms_scores)
     draw_box_with_text(dst, nms_rects, nms_scores)
 
-    cv2.imshow('img', dst)
-    cv2.waitKey(0)
+    cv2.imwrite('0001.jpg',dst)
+    # cv2.imshow('img', dst)
+    # cv2.waitKey(0)

@@ -22,17 +22,17 @@ if __name__ == '__main__':
     """
     voc_car_train_dir = '../../data/voc_car/train'
     # ground truth
-    gt_annotation_dir = os.path.join(voc_car_train_dir, 'Annotations')
-    jpeg_dir = os.path.join(voc_car_train_dir, 'JPEGImages')
+    gt_annotation_dir = os.path.join(voc_car_train_dir, 'Annotations')  # ../../data/voc_car/train/Annotations
+    jpeg_dir = os.path.join(voc_car_train_dir, 'JPEGImages')  # ../../data/voc_car/train/JPEGImages
 
     classifier_car_train_dir = '../../data/finetune_car/train'
     # positive
-    positive_annotation_dir = os.path.join(classifier_car_train_dir, 'Annotations')
+    positive_annotation_dir = os.path.join(classifier_car_train_dir, 'Annotations')  # ../../data/finetune_car/train/Annotations
 
     dst_root_dir = '../../data/bbox_regression/'
-    dst_jpeg_dir = os.path.join(dst_root_dir, 'JPEGImages')
-    dst_bndbox_dir = os.path.join(dst_root_dir, 'bndboxs')
-    dst_positive_dir = os.path.join(dst_root_dir, 'positive')
+    dst_jpeg_dir = os.path.join(dst_root_dir, 'JPEGImages') #../../data/bbox_regression/JPEGImages
+    dst_bndbox_dir = os.path.join(dst_root_dir, 'bndboxs')  #../../data/bbox_regression/bndboxs
+    dst_positive_dir = os.path.join(dst_root_dir, 'positive')   #../../data/bbox_regression/positive
 
     util.check_dir(dst_root_dir)
     util.check_dir(dst_jpeg_dir)
@@ -44,10 +44,10 @@ if __name__ == '__main__':
     total_positive_num = 0
     for sample_name in samples:
         # 提取正样本边界框坐标（IoU>=0.5）
-        positive_annotation_path = os.path.join(positive_annotation_dir, sample_name + '_1.csv')
+        positive_annotation_path = os.path.join(positive_annotation_dir, sample_name + '_1.csv')    #../../data/finetune_car/train/Annotations/图片名_1.csv
         positive_bndboxes = np.loadtxt(positive_annotation_path, dtype=int, delimiter=' ')
         # 提取标注边界框
-        gt_annotation_path = os.path.join(gt_annotation_dir, sample_name + '.xml')
+        gt_annotation_path = os.path.join(gt_annotation_dir, sample_name + '.xml')  #../../data/voc_car/train/Annotations/图片名.xml
         bndboxs = util.parse_xml(gt_annotation_path)
         # 计算符合条件（IoU>0.6）的候选建议
         positive_list = list()

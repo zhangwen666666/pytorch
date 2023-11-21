@@ -20,14 +20,14 @@ def check_dir(data_dir):
         os.mkdir(data_dir)
 
 
-# 解析文件car.csv,以字符串形式加载数据并返回加载的数据(返回一个numpy数组，值是字符串类型)
+# 解析文件car.csv,以字符串形式加载数据并返回加载的数据(返回一个numpy数组，值是字符串类型,csv中保存的是图片名称)
 def parse_car_csv(csv_dir):
     csv_path = os.path.join(csv_dir, 'car.csv')
     samples = np.loadtxt(csv_path, dtype=str)
     return samples
 
 
-def parse_xml(xml_path):
+def parse_xml(xml_path):    ##../../data/voc_car/train/Annotations/图片名.xml
     """
     解析xml文件，返回标注边界框坐标
     """

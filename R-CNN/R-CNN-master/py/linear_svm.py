@@ -30,6 +30,7 @@ batch_negative = 96
 batch_total = 128
 
 
+# data_loaders, data_sizes = load_data('./data/classifier_car')
 def load_data(data_root_dir):
     transform = transforms.Compose([
         transforms.ToPILImage(),
@@ -43,7 +44,7 @@ def load_data(data_root_dir):
     data_sizes = {}
     remain_negative_list = list()
     for name in ['train', 'val']:
-        data_dir = os.path.join(data_root_dir, name)
+        data_dir = os.path.join(data_root_dir, name)    #./data/classifier_car/train(val)
 
         data_set = CustomClassifierDataset(data_dir, transform=transform)
         if name == 'train':
@@ -142,7 +143,7 @@ def train_model(data_loaders, model, criterion, optimizer, lr_scheduler, num_epo
             running_corrects = 0
 
             # 输出正负样本数
-            data_set = data_loaders[phase].dataset
+            data_set = data_loaders[phase].dataset  # 数据集
             print('{} - positive_num: {} - negative_num: {} - data size: {}'.format(
                 phase, data_set.get_positive_num(), data_set.get_negative_num(), data_sizes[phase]))
 
