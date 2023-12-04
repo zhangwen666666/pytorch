@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="zw@121.5.201.42:38959" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="zw@119.45.183.209:38959 key (3)" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
       <paths name="zw@119.45.183.209:38959 key">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/home/zw/disk1/Faster_RCNN" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>
       <paths name="zw@119.45.183.209:38959 key (2)">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/home/zw/disk1/Faster_RCNN" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>
       <paths name="zw@119.45.183.209:38959 key (3)">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/home/zw/disk1/Faster_RCNN" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>
